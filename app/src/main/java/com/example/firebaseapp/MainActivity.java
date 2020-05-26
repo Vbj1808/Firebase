@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -18,54 +20,30 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Type;
+
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText txtname,txtage,txtphone,txtheight;
-    Button btnInsert;
-    FirebaseDatabase database;
-    DatabaseReference reff;
-    Member member;
-    long maxid=0;
+    TextView titlepage, subtitlepage, endpage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        txtname = (EditText) findViewById(R.id.name);
-        txtage = (EditText) findViewById(R.id.age);
-        txtheight = (EditText) findViewById(R.id.height);
-        txtphone = (EditText) findViewById(R.id.phone);
-        btnInsert = (Button) findViewById(R.id.btnInsert);
-        member = new Member();
-        reff = FirebaseDatabase.getInstance().getReference().child("Member");
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists())
-                    maxid = (dataSnapshot.getChildrenCount());
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        titlepage = findViewById(R.id.titlepage);
+        subtitlepage = findViewById(R.id.subtitlepage);
+        endpage = findViewById(R.id.endpage);
 
-            }
-        });
-        btnInsert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int agea = Integer.parseInt(txtage.getText().toString().trim());
-                Float hit = Float.parseFloat((txtheight.getText().toString().trim()));
-                Long phn = Long.parseLong((txtphone).getText().toString().trim());
+        //import font
+        Typeface MLight = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Light.ttf");
+        Typeface MMedium = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Medium.ttf");
 
-                member.setName(txtname.getText().toString().trim());
-                member.setAge(agea);
-                member.setHt(hit);
-                member.setPh(phn);
+        // customize font
+        titlepage.setTypeface(MMedium);
+        subtitlepage.setTypeface(MLight);
+        endpage.setTypeface(MLight);
 
-
-                reff.child(String.valueOf(maxid+1)).setValue("member");
-                Toast.makeText(MainActivity.this,"data inserted successfully",Toast.LENGTH_LONG).show();
-            }
-        });
 
     }
 
