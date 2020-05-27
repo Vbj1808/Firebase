@@ -2,6 +2,8 @@ package com.example.firebaseapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -21,11 +23,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
     TextView titlepage, subtitlepage, endpage;
+    DatabaseReference reference;
+    RecyclerView ourdoes;
+    ArrayList<MyDoes> list;
+    DoesAdapter doesAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
 //        titlepage.setTypeface(MMedium);
 //        subtitlepage.setTypeface(MLight);
 //        endpage.setTypeface(MLight);
+
+
+        //working with data
+
+        ourdoes = findViewById(R.id.ourdoes);
+        ourdoes.setLayoutManager(new LinearLayoutManager(this));
+        list = new ArrayList<MyDoes>();
+
+        //get data from
 
 
     }
