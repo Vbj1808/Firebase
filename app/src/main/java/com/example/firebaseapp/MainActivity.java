@@ -35,14 +35,14 @@ public class MainActivity extends AppCompatActivity {
         subtitlepage = findViewById(R.id.subtitlepage);
         endpage = findViewById(R.id.endpage);
 
-        //import font
-        Typeface MLight = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Light.ttf");
-        Typeface MMedium = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Medium.ttf");
-
-        // customize font
-        titlepage.setTypeface(MMedium);
-        subtitlepage.setTypeface(MLight);
-        endpage.setTypeface(MLight);
+//        //import font
+//        Typeface MLight = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Light.ttf");
+//        Typeface MMedium = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Medium.ttf");
+//
+//        // customize font
+//        titlepage.setTypeface(MMedium);
+//        subtitlepage.setTypeface(MLight);
+//        endpage.setTypeface(MLight);
 
 
     }

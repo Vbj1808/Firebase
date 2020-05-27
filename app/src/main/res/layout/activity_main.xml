@@ -20,7 +20,8 @@
             android:layout_marginTop="20dp"
             android:textSize="32sp"
             android:text="My Does"
-            android:paddingLeft="140dp"
+
+            android:layout_gravity="center"
             android:textColor="#FFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -29,8 +30,9 @@
             android:id="@+id/subtitlepage"
             android:textSize="18sp"
             android:text="Finish Them Quickly Today"
-            android:paddingLeft="100dp"
+            android:layout_gravity="center"
             android:textColor="#4A4E6A"
+            android:textAlignment="center"
             android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
