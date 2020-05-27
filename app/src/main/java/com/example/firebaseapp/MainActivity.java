@@ -58,7 +58,26 @@ public class MainActivity extends AppCompatActivity {
         ourdoes.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<MyDoes>();
 
-        //get data from
+        //get data from firebase
+        reference = FirebaseDatabase.getInstance().getReference().child("DoesApp");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                {
+                    MyDoes p = dataSnapshot1.getValue(MyDoes.class);
+                    list.add(p);
+                }
+                doesAdapter = new DoesAdapter(MainActivity.this, list);
+                ourdoes.setAdapter(doesAdapter);
+                doesAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), "No data" , Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
